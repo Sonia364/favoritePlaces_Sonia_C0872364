@@ -64,10 +64,18 @@
 				B486C58929809BE9006FC8CF /* Main.storyboard */,
 				B486C58F29809BE9006FC8CF /* Assets.xcassets */,
 				B486C59129809BE9006FC8CF /* LaunchScreen.storyboard */,
+				B486C59A29809F76006FC8CF /* Modal */,
 				B486C59429809BE9006FC8CF /* Info.plist */,
-				B486C58C29809BE9006FC8CF /* favoritePlaces_Sonia_C0872364.xcdatamodeld */,
 			);
 			path = favoritePlaces_Sonia_C0872364;
+			sourceTree = "<group>";
+		};
+		B486C59A29809F76006FC8CF /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				B486C58C29809BE9006FC8CF /* favoritePlaces_Sonia_C0872364.xcdatamodeld */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
