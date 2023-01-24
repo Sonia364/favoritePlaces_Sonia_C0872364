@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var placeToolbar: UIToolbar!
+    @IBOutlet weak var noPlaceView: UIView!
     
     var favPlaces = [FavPlace]()
     
@@ -39,7 +41,18 @@ class ViewController: UIViewController {
         }
         
         tableView.reloadData()
-        
+        showNoPlaceView()
+    }
+    
+    //MARK: - show empty table view
+    func showNoPlaceView(){
+        if favPlaces.count == 0 {
+            tableView.backgroundView = noPlaceView
+            placeToolbar.isHidden = true
+        }else{
+            tableView.backgroundView = nil
+            placeToolbar.isHidden = false
+        }
     }
 
 
