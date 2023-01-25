@@ -54,6 +54,38 @@ class ViewController: UIViewController {
             placeToolbar.isHidden = false
         }
     }
+    
+    func updatePlace(locality: String, postcode: String) {
+        favPlaces = []
+        let newPlace = FavPlace(context: context)
+        newPlace.locality = locality
+        newPlace.postcode = postcode
+        
+        savePlace()
+        loadPlaces()
+    }
+    
+    // delete place from context
+    func deletePlace(place: FavPlace) {
+        context.delete(place)
+    }
+    
+    /// Save notes into core data
+    func savePlace() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving the tasks \(error.localizedDescription)")
+        }
+    }
+    
+    @IBAction func unwindToViewController(_ unwindSegue: UIStoryboardSegue) {
+//        let sourceViewController = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
+        savePlace()
+        loadPlaces()
+        tableView.setEditing(false, animated: true)
+    }
 
 
 }

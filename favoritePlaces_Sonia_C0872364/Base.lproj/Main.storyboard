@@ -183,9 +183,11 @@
                     <navigationItem key="navigationItem" id="Bgh-sr-nfF"/>
                     <connections>
                         <outlet property="mapview" destination="H5b-Pb-H9H" id="lwf-Fd-Ld2"/>
+                        <segue destination="Vaq-5k-HhI" kind="unwind" unwindAction="unwindToViewController:" id="geB-Cr-Xdy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOc-E2-156" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Vaq-5k-HhI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2341" y="-2"/>
         </scene>
