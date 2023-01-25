@@ -8,6 +8,10 @@
 import UIKit
 import MapKit
 
+protocol HandleMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark)
+}
+
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var mapview: MKMapView!
@@ -15,6 +19,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var userCoordinates = CLLocationCoordinate2D()
     
     weak var delegate: ViewController?
+    var resultSearchController:UISearchController? = nil
+    var selectedPin:MKPlacemark? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +32,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         addSingleTap()
+        
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchViewController
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        navigationItem.titleView = resultSearchController?.searchBar
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        definesPresentationContext = true
+        locationSearchTable.mapView = mapview
+        locationSearchTable.handleMapSearchDelegate = self
 
        
     }
@@ -183,4 +201,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
 
  
+}
+
+extension MapViewController: HandleMapSearch {
+    
+    func dropPinZoomIn(placemark:MKPlacemark){
+        // cache the pin
+        selectedPin = placemark
+        // clear existing pins
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
+        mapview.setRegion(region, animated: true)
+        let coordinates = placemark.coordinate
+        displayLocation(latitude: coordinates.latitude, longitude: coordinates.longitude, title: "Fav Place")
+    }
 }

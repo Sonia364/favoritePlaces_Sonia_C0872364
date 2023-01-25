@@ -16,6 +16,7 @@
 		B486C59329809BE9006FC8CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B486C59129809BE9006FC8CF /* LaunchScreen.storyboard */; };
 		B48DD2492980A8550033DBE0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48DD2482980A8550033DBE0 /* MapViewController.swift */; };
 		B48DD24B2980CA080033DBE0 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48DD24A2980CA080033DBE0 /* PlaceDetailViewController.swift */; };
+		B48DD24D2980DB7B0033DBE0 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48DD24C2980DB7B0033DBE0 /* LocationSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		B486C59429809BE9006FC8CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B48DD2482980A8550033DBE0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B48DD24A2980CA080033DBE0 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
+		B48DD24C2980DB7B0033DBE0 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				B486C58729809BE9006FC8CF /* ViewController.swift */,
 				B48DD2482980A8550033DBE0 /* MapViewController.swift */,
 				B48DD24A2980CA080033DBE0 /* PlaceDetailViewController.swift */,
+				B48DD24C2980DB7B0033DBE0 /* LocationSearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			files = (
 				B486C58829809BE9006FC8CF /* ViewController.swift in Sources */,
 				B486C58429809BE9006FC8CF /* AppDelegate.swift in Sources */,
+				B48DD24D2980DB7B0033DBE0 /* LocationSearchViewController.swift in Sources */,
 				B486C58629809BE9006FC8CF /* SceneDelegate.swift in Sources */,
 				B48DD24B2980CA080033DBE0 /* PlaceDetailViewController.swift in Sources */,
 				B48DD2492980A8550033DBE0 /* MapViewController.swift in Sources */,
