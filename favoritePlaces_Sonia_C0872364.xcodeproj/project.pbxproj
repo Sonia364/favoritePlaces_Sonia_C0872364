@@ -15,6 +15,7 @@
 		B486C59029809BE9006FC8CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B486C58F29809BE9006FC8CF /* Assets.xcassets */; };
 		B486C59329809BE9006FC8CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B486C59129809BE9006FC8CF /* LaunchScreen.storyboard */; };
 		B48DD2492980A8550033DBE0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48DD2482980A8550033DBE0 /* MapViewController.swift */; };
+		B48DD24B2980CA080033DBE0 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48DD24A2980CA080033DBE0 /* PlaceDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B486C59229809BE9006FC8CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B486C59429809BE9006FC8CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B48DD2482980A8550033DBE0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B48DD24A2980CA080033DBE0 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				B486C58729809BE9006FC8CF /* ViewController.swift */,
 				B48DD2482980A8550033DBE0 /* MapViewController.swift */,
+				B48DD24A2980CA080033DBE0 /* PlaceDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				B486C58829809BE9006FC8CF /* ViewController.swift in Sources */,
 				B486C58429809BE9006FC8CF /* AppDelegate.swift in Sources */,
 				B486C58629809BE9006FC8CF /* SceneDelegate.swift in Sources */,
+				B48DD24B2980CA080033DBE0 /* PlaceDetailViewController.swift in Sources */,
 				B48DD2492980A8550033DBE0 /* MapViewController.swift in Sources */,
 				B486C58E29809BE9006FC8CF /* favoritePlaces_Sonia_C0872364.xcdatamodeld in Sources */,
 			);

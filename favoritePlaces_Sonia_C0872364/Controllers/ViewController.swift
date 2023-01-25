@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         loadPlaces()
         showSearchBar()
+        showNoPlaceView()
     }
     
     //MARK: - Core data interaction functions
@@ -45,7 +46,7 @@ class ViewController: UIViewController {
         }
         
         tableView.reloadData()
-        showNoPlaceView()
+
     }
     
     //MARK: - show empty table view
@@ -59,11 +60,14 @@ class ViewController: UIViewController {
         }
     }
     
-    func updatePlace(locality: String, postcode: String) {
+    func updatePlace(locality: String, postcode: String, country: String, thoroughfare: String, subthoroughfare: String) {
         favPlaces = []
         let newPlace = FavPlace(context: context)
         newPlace.locality = locality
         newPlace.postcode = postcode
+        newPlace.country = country
+        newPlace.subthoroughfare = subthoroughfare
+        newPlace.thoroughfare = thoroughfare
         
         savePlace()
         loadPlaces()
@@ -91,6 +95,14 @@ class ViewController: UIViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
         searchController.searchBar.searchTextField.textColor = .lightGray
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destination = segue.destination as? MapViewController {
+            destination.delegate = self
+        }
+        
     }
 
 
@@ -122,6 +134,41 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return true
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+       let DeleteItem = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, boolValue) in
+           
+           let alert = UIAlertController(title: "Remove this place from favourite list ", message: "Are you sure?", preferredStyle: .alert)
+           let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+               self.deletePlace(place: self.favPlaces[indexPath.row])
+               self.savePlace()
+               self.favPlaces.remove(at: indexPath.row)
+               // Delete the row from the data source
+               tableView.deleteRows(at: [indexPath], with: .fade)
+               self.loadPlaces()
+           }
+           
+           let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+           alert.addAction(yesAction)
+           alert.addAction(noAction)
+           self.present(alert, animated: true, completion: nil)
+           
+           
+       }
+        
+       let swipeActions = UISwipeActionsConfiguration(actions: [DeleteItem])
+
+       return swipeActions
+   }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let displayVC = storyboard?.instantiateViewController(withIdentifier: "PlaceDetailVC") as? PlaceDetailViewController {
+    
+            displayVC.delegate = self
+            displayVC.selectedPlace = favPlaces[indexPath.row]
+            navigationController?.pushViewController(displayVC, animated: true)
+            }
+    }
     
     
 }
