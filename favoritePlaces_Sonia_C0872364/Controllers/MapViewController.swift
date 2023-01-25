@@ -64,12 +64,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             } else {
                 if let placemark = placemarks?[0] {
                     
-                    annotation.title = placemark.subThoroughfare! + " " + placemark.thoroughfare! + ", " + placemark.locality! + ", " + placemark.country!
+                    annotation.title = placemark.subLocality! + ", " + placemark.locality! + ", " + placemark.country!
                 }
             }
         }
         
         annotation.coordinate = location
+        
         mapview.addAnnotation(annotation)
         
     }
@@ -85,6 +86,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             return annotationView
         default:
             let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "droppablePin")
+            annotationView.isDraggable = true
             annotationView.animatesDrop = true
             annotationView.pinTintColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
             annotationView.canShowCallout = true
@@ -103,6 +105,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @objc func dropPin(sender: UITapGestureRecognizer) {
         
+        removePin()
         
         let touchPoint = sender.location(in: mapview)
         let coordinate = mapview.convert(touchPoint, toCoordinateFrom: mapview)
@@ -144,11 +147,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             } else {
                 if let placemark = placemarks?[0] {
                     
-                    let locality = placemark.locality!
-                    let postcode = placemark.postalCode!
-                    let country = placemark.country!
-                    let subThoroughfare  = placemark.subThoroughfare!
-                    let thoroughfare = placemark.thoroughfare!
+                    let locality = placemark.locality ?? " "
+                    let postcode = placemark.postalCode ?? " "
+                    let country = placemark.country ?? " "
+                    let subThoroughfare  = placemark.subThoroughfare ?? " "
+                    let thoroughfare = placemark.thoroughfare ?? " "
                     self.delegate?.updatePlace(locality: locality, postcode: postcode, country: country, thoroughfare: thoroughfare, subthoroughfare: subThoroughfare)
                 }
             }
@@ -161,7 +164,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        delegate?.showNoPlaceView()
         delegate?.loadPlaces()
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
+        switch newState {
+        case .starting:
+            view.dragState = .dragging
+        case .ending, .canceling:
+            let coordinates = view.annotation?.coordinate
+            displayLocation(latitude: coordinates!.latitude, longitude: coordinates!.longitude, title: "Fav Place")
+            view.dragState = .none
+            
+        default: break
+        }
     }
 
  
