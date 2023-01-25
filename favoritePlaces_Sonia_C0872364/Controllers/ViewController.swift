@@ -19,9 +19,13 @@ class ViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    // define a search controller
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadPlaces()
+        showSearchBar()
     }
     
     //MARK: - Core data interaction functions
@@ -79,12 +83,14 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToViewController(_ unwindSegue: UIStoryboardSegue) {
-//        let sourceViewController = unwindSegue.source
-        // Use data from the view controller which initiated the unwind segue
-        savePlace()
-        loadPlaces()
-        tableView.setEditing(false, animated: true)
+    //MARK: - show search bar func
+    func showSearchBar() {
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Place"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        searchController.searchBar.searchTextField.textColor = .lightGray
     }
 
 
@@ -118,5 +124,32 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     
+}
+
+//MARK: - search bar delegate methods
+extension ViewController: UISearchBarDelegate {
+    
+    /// search button on keypad functionality
+    /// - Parameter searchBar: search bar is passed to this function
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // add predicate
+        let predicate = NSPredicate(format: "locality CONTAINS[cd] %@", searchBar.text!)
+        loadPlaces(predicate: predicate)
+    }
+    
+    
+    /// when the text in text bar is changed
+    /// - Parameters:
+    ///   - searchBar: search bar is passed to this function
+    ///   - searchText: the text that is written in the search bar
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadPlaces()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
 }
 
