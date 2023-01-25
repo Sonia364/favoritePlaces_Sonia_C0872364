@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -45,6 +46,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Get Started">
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="5oi-Ol-xBW" kind="show" id="XER-Xa-Cdv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -113,6 +117,9 @@
                                     </barButtonItem>
                                     <barButtonItem systemItem="add" id="Uqw-0x-Zyp">
                                         <color key="tintColor" red="0.96841138599999999" green="0.80132024830000004" blue="0.18762987680000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <segue destination="5oi-Ol-xBW" kind="show" id="hft-fb-Odj"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.96841138599999999" green="0.80132024830000004" blue="0.18762987680000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -149,7 +156,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VgB-o3-A2g" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1715.2671755725189" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="1555" y="-2"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="3Ys-XR-jbW">
+            <objects>
+                <viewController id="5oi-Ol-xBW" customClass="MapViewController" customModule="favoritePlaces_Sonia_C0872364" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2hl-Mm-OsP">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5b-Pb-H9H">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ytt-NA-5Hd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ytt-NA-5Hd" firstAttribute="bottom" secondItem="H5b-Pb-H9H" secondAttribute="bottom" id="Fxc-2Q-EeS"/>
+                            <constraint firstItem="Ytt-NA-5Hd" firstAttribute="trailing" secondItem="H5b-Pb-H9H" secondAttribute="trailing" id="Kuc-Pf-DUq"/>
+                            <constraint firstItem="H5b-Pb-H9H" firstAttribute="leading" secondItem="Ytt-NA-5Hd" secondAttribute="leading" id="w1I-bu-nHq"/>
+                            <constraint firstItem="H5b-Pb-H9H" firstAttribute="top" secondItem="Ytt-NA-5Hd" secondAttribute="top" id="zgY-Vl-Gq2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Bgh-sr-nfF"/>
+                    <connections>
+                        <outlet property="mapview" destination="H5b-Pb-H9H" id="lwf-Fd-Ld2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yOc-E2-156" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2341" y="-2"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xac-sb-AEG">
@@ -170,6 +208,9 @@
             <point key="canvasLocation" x="788.54961832061065" y="-2.1126760563380285"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="XER-Xa-Cdv"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="geolocation-png-1" width="400" height="400"/>
         <namedColor name="AccentColor">

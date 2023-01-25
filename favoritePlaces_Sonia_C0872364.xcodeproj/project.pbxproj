@@ -14,6 +14,7 @@
 		B486C58E29809BE9006FC8CF /* favoritePlaces_Sonia_C0872364.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B486C58C29809BE9006FC8CF /* favoritePlaces_Sonia_C0872364.xcdatamodeld */; };
 		B486C59029809BE9006FC8CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B486C58F29809BE9006FC8CF /* Assets.xcassets */; };
 		B486C59329809BE9006FC8CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B486C59129809BE9006FC8CF /* LaunchScreen.storyboard */; };
+		B48DD2492980A8550033DBE0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48DD2482980A8550033DBE0 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B486C58F29809BE9006FC8CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B486C59229809BE9006FC8CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B486C59429809BE9006FC8CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B48DD2482980A8550033DBE0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +62,10 @@
 			children = (
 				B486C58329809BE9006FC8CF /* AppDelegate.swift */,
 				B486C58529809BE9006FC8CF /* SceneDelegate.swift */,
-				B486C58729809BE9006FC8CF /* ViewController.swift */,
 				B486C58929809BE9006FC8CF /* Main.storyboard */,
 				B486C58F29809BE9006FC8CF /* Assets.xcassets */,
 				B486C59129809BE9006FC8CF /* LaunchScreen.storyboard */,
+				B48DD2472980A83E0033DBE0 /* Controllers */,
 				B486C59A29809F76006FC8CF /* Modal */,
 				B486C59429809BE9006FC8CF /* Info.plist */,
 			);
@@ -76,6 +78,15 @@
 				B486C58C29809BE9006FC8CF /* favoritePlaces_Sonia_C0872364.xcdatamodeld */,
 			);
 			path = Modal;
+			sourceTree = "<group>";
+		};
+		B48DD2472980A83E0033DBE0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B486C58729809BE9006FC8CF /* ViewController.swift */,
+				B48DD2482980A8550033DBE0 /* MapViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +163,7 @@
 				B486C58829809BE9006FC8CF /* ViewController.swift in Sources */,
 				B486C58429809BE9006FC8CF /* AppDelegate.swift in Sources */,
 				B486C58629809BE9006FC8CF /* SceneDelegate.swift in Sources */,
+				B48DD2492980A8550033DBE0 /* MapViewController.swift in Sources */,
 				B486C58E29809BE9006FC8CF /* favoritePlaces_Sonia_C0872364.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
